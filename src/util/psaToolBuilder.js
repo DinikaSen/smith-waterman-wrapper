@@ -1,7 +1,7 @@
-const child_process = require('child_process');
+import child_process from 'child_process';
 
-buildPSATool = function () {
-    child_process.exec('make', {cwd: './seq_align'}, function (err) {
+function buildPSATool () {
+    child_process.exec('make', {cwd: '../../src/util/seq-align'}, err => {
         if (err) {
             console.log(err);
         } else {

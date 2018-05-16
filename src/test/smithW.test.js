@@ -1,19 +1,17 @@
 require('mocha');
-expect = require('chai').expect;
-should = require('chai').should();
-var stdout = require("test-console").stdout;
-var stderr = require("test-console").stderr;
-var resolve = require('path').resolve;
 const assert = require('assert');
+import { expect } from 'chai';
+import {should} from 'chai';
+import {stdout} from "test-console";
 
-var restoreStdout;
+let restoreStdout;
 
-var smithW= require('../lib/smithW');
+import smithW from '../lib/smithW';
 
 describe('#Align an unaligned sequence file', function () {
     it('should execute command with no error', function (done) {
-        var inspect = stdout.inspect();
-        smithW.alignFile('test/samples/example.fasta',2,-2,-10,function(err){
+        const inspect = stdout.inspect();
+        smithW.alignFile('src/test/samples/example.fasta',2,-2,-10,function(err){
             if (err) {
                 console.log(err);
             }
@@ -28,7 +26,7 @@ describe('#Align an unaligned sequence file', function () {
 
     it('should give message that file does not exist', function (done) {
         var inspect = stdout.inspect();
-        smithW.alignFile('test/samples/examples.fasta',2,-2,-10,function(err){
+        smithW.alignFile('src/test/samples/examples.fasta',2,-2,-10,function(err){
             if (err) {
                 console.log(err);
             }
@@ -45,7 +43,7 @@ describe('#Align an unaligned sequence file', function () {
 describe('#Align an unaligned sequence file and return score matrices with alignment', function () {
     it('should execute command with no error', function (done) {
         var inspect = stdout.inspect();
-        smithW.alignFileGetMatrix('test/samples/example.fasta',2,-2,-10,function(err){
+        smithW.alignFileGetMatrix('src/test/samples/example.fasta',2,-2,-10,function(err){
             if (err) {
                 console.log(err);
             }
